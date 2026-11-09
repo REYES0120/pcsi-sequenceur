@@ -1,9 +1,11 @@
-# Séquenceur PCSI — étape 2 (moteur de décision)
+# Séquenceur PCSI — étape 3 (données)
 
-Étape 1 : modèle, score, paliers de révision. Étape 2 : contraintes fixes, J0, deepwork, pause,
-sport, DM, `nextAction(state, now)`.
-Rien n'a été compilé en local : GitHub Actions est la vérification.
+Étape 1 : modèle, score. Étape 2 : moteur de décision. Étape 3 : import de data.json,
+journal des événements, stockage fichier, assemblage de l'état.
 
-## Vérifier
-`git add . && git commit -m "etape 2" && git push` puis onglet « Actions ».
+Formats :
+- `data.json` (une fois par semestre) : voir `examples/data.example.json`.
+- `journal.jsonl` : une ligne JSON par événement, ajout uniquement. Se lit à l'œil, jamais à modifier à la main.
+
+Vérifier : `git add . && git commit -m "etape 3" && git push` puis onglet « Actions ».
 S'il est rouge : copie-moi les dernières lignes du log.

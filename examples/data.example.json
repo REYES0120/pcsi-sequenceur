@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "semester": 1,
+  "weekA": "2026-11-09",
+  "daysOff": [
+    { "from": "2026-11-11", "to": "2026-11-11", "label": "Armistice" },
+    { "from": "2026-12-19", "to": "2027-01-03", "label": "Vacances de Noël" }
+  ],
+  "slots": [
+    { "day": "MON", "start": "11:05", "end": "12:00", "subject": "CHIMIE", "type": "TD", "week": "A" },
+    { "day": "MON", "start": "14:00", "end": "15:50", "subject": "SI", "type": "COURS", "week": "A" },
+    { "day": "TUE", "start": "08:00", "end": "09:50", "subject": "MATHS" },
+    { "day": "TUE", "start": "17:05", "end": "18:00", "type": "EPS" }
+  ],
+  "colles": [
+    { "date": "2026-11-09", "start": "13:00", "end": "14:00", "subject": "CHIMIE", "colleur": "M. Chenevois" }
+  ],
+  "ds": [
+    { "date": "2026-11-14", "start": "08:00", "end": "12:00", "subjects": ["MATHS"] },
+    { "date": "2026-11-28", "start": "08:00", "end": "12:00", "subjects": ["CHIMIE", "SI"] }
+  ]
+}
