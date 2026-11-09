@@ -38,8 +38,12 @@ object Params {
     const val J0_MIN_AVAILABLE_MIN: Int = 30
     const val EXTERNAL_MARGIN_MIN: Int = 45
     const val CLOTURE_MIN: Int = 15
-    const val CLOTURE_LEAD_MIN: Int = 30
     const val SPORT_MIN: Int = 40
+    const val SPORT_MIN_FREE_MIN: Int = 45
+    /** Deepwork : en dessous de 20 min de temps disponible (après buffer), on ne propose rien. */
+    const val DEEPWORK_MIN_PROPOSE_MIN: Int = 20
+    /** (H9) Pause plus courte que 5 min : inutile, on ne la propose pas. */
+    const val PAUSE_MIN_USEFUL_MIN: Int = 5
     const val SPORT_MAX_PER_WEEK: Int = 3
     const val CARDIO_MIN: Int = 35 // (H) milieu de « 30-40 min »
     const val PAUSE_THRESHOLD_MIN: Int = 60
@@ -58,4 +62,6 @@ object Params {
     val DINNER_START: LocalTime = LocalTime.of(19, 0)
     val DINNER_END: LocalTime = LocalTime.of(20, 0)
     val CARDIO_PROPOSAL_TIME: LocalTime = LocalTime.of(10, 0)
+    /** Clôture à 22h15 pour une extinction à 22h30. */
+    val CLOTURE_START: LocalTime = LocalTime.of(22, 15)
 }

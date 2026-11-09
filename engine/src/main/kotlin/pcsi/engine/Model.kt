@@ -50,6 +50,9 @@ data class Ds(
 
 data class Chapter(val subject: Subject, val name: String, val seen: LocalDate)
 
+/** Devoir maison : id unique, matière, date de rendu. Terminé quand son id est dans State.dmDone. */
+data class Dm(val id: String, val subject: Subject, val due: LocalDate)
+
 data class Rank(val subject: Subject, val date: LocalDate, val rank: Int, val size: Int)
 
 /** Déclaration de difficulté : portée 7 jours, ne joue que sur le deepwork. */
@@ -58,7 +61,7 @@ data class DifficultyDecl(val subject: Subject, val at: LocalDateTime)
 /** Matières prioritaires déclarées. Un ensemble vide signifie « aucune matière prioritaire ». */
 data class PriorityDecl(val subjects: Set<Subject>, val at: LocalDateTime)
 
-enum class SessionKind { J0, DEEPWORK, SPORT, CARDIO, PAUSE, CLOTURE }
+enum class SessionKind { J0, DEEPWORK, SPORT, CARDIO, PAUSE, CLOTURE, DM }
 
 /**
  * DONE : session faite (fini, terminé, débordé), avec sa durée réelle.
@@ -96,7 +99,9 @@ data class State(
     val ranks: List<Rank>,
     val difficulty: List<DifficultyDecl>,
     val priority: List<PriorityDecl>,
-    val sessions: List<SessionRecord>
+    val sessions: List<SessionRecord>,
+    val dms: List<Dm> = emptyList(),
+    val dmDone: Set<String> = emptySet()
 )
 
 fun emptyState(weekAReference: LocalDate = LocalDate.of(2026, 11, 9)): State = State(
