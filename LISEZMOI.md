@@ -1,11 +1,19 @@
-# Séquenceur PCSI — étape 3 (données)
+# Séquenceur PCSI — étape 4 (application Android)
 
-Étape 1 : modèle, score. Étape 2 : moteur de décision. Étape 3 : import de data.json,
-journal des événements, stockage fichier, assemblage de l'état.
+Étapes 1 à 3 : moteur, données. Étape 4 : application Android (alarmes, notifications avec boutons,
+timer, widget, écran minimal) + cycle de vie des sessions testé côté moteur.
 
-Formats :
-- `data.json` (une fois par semestre) : voir `examples/data.example.json`.
-- `journal.jsonl` : une ligne JSON par événement, ajout uniquement. Se lit à l'œil, jamais à modifier à la main.
+## Obtenir l'APK
+1. `git add . && git commit -m "etape 4" && git push`
+2. Onglet « Actions » du dépôt → dernier run → section « Artifacts » → `apk-debug`.
+3. Télécharge, dézippe, envoie `app-debug.apk` sur le téléphone et installe-le
+   (autoriser l'installation depuis cette source).
 
-Vérifier : `git add . && git commit -m "etape 3" && git push` puis onglet « Actions ».
-S'il est rouge : copie-moi les dernières lignes du log.
+## Premier lancement
+1. Autoriser les notifications.
+2. « Importer data.json » (le fichier est choisi dans le téléphone).
+3. Régler une fois : notifications avec bannières, batterie « sans restriction »,
+   démarrage automatique, application verrouillée dans les applis récentes.
+4. Ajouter le widget « Séquenceur » sur l'écran d'accueil.
+
+Si le build est rouge : copie-moi les dernières lignes du log.

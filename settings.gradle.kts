@@ -13,3 +13,4 @@ dependencyResolutionManagement {
 }
 rootProject.name = "pcsi-sequenceur"
 include(":engine")
+include(":app")

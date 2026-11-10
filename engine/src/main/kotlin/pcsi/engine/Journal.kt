@@ -39,20 +39,20 @@ data class Entry(
 
 data class DecodeResult(val entries: List<Entry>, val skipped: List<String>)
 
-private fun JsonObject.s(key: String): String? {
+internal fun JsonObject.s(key: String): String? {
     val e = this[key]
     return if (e is JsonPrimitive && e.isString) e.content else null
 }
 
-private fun JsonObject.i(key: String): Int? {
+internal fun JsonObject.i(key: String): Int? {
     val e = this[key]
     return if (e is JsonPrimitive && !e.isString) e.intOrNull else null
 }
 
-private inline fun <reified T : Enum<T>> enumOf(name: String?): T? =
+internal inline fun <reified T : Enum<T>> enumOf(name: String?): T? =
     if (name == null) null else enumValues<T>().firstOrNull { it.name == name }
 
-private fun parseObj(line: String): JsonObject? =
+internal fun parseObj(line: String): JsonObject? =
     try {
         Json.parseToJsonElement(line) as? JsonObject
     } catch (ex: Exception) {
