@@ -50,6 +50,11 @@ class MainActivity : Activity() {
         render()
     }
 
+    override fun onResume() {
+        super.onResume()
+        if (::content.isInitialized) render()
+    }
+
     private fun label(text: String, size: Float = 16f) {
         val t = TextView(this)
         t.text = text
@@ -141,6 +146,9 @@ class MainActivity : Activity() {
             val a = Sequencer.recalc(this@MainActivity, true)
             if (a is Action.None) toast(reasonText(a.reason))
             render()
+        }
+        button("Saisies (chapitre vu, difficulté, rang, DM…)") {
+            startActivity(Intent(this@MainActivity, FormsActivity::class.java))
         }
         button("Importer data.json") {
             val i = Intent(Intent.ACTION_OPEN_DOCUMENT)

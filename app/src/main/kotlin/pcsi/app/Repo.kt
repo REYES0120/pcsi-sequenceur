@@ -31,6 +31,11 @@ object Repo {
         return StateBuilder.build(data, journal(ctx).readAll().entries)
     }
 
+    /** Ajoute une saisie (chapitre, difficulté, rang, DM, annulation...) au journal. */
+    fun append(ctx: Context, entry: Entry) {
+        journal(ctx).append(entry)
+    }
+
     fun record(ctx: Context, record: SessionRecord, now: LocalDateTime) {
         journal(ctx).append(Entry(now, Payload.Session(record)))
     }

@@ -7,10 +7,10 @@ package pcsi.engine
 object StateBuilder {
 
     /**
-     * Une entrée annulée par un Retract est ignorée. Un Retract ne peut pas être annulé lui-même
-     * (un Retract qui vise un autre Retract est sans effet).
+     * Les entrées encore valables : sans les Retract, et sans les entrées qu'un Retract annule.
+     * Un Retract ne peut pas être annulé lui-même (un Retract qui vise un autre Retract est sans effet).
      */
-    fun build(data: StaticData, entries: List<Entry>): State {
+    fun activeEntries(entries: List<Entry>): List<Entry> {
         val retractEntryIds = HashSet<String>()
         for (e in entries) {
             if (e.payload is Payload.Retract) retractEntryIds.add(e.id)
@@ -20,7 +20,10 @@ object StateBuilder {
             val p = e.payload
             if (p is Payload.Retract && !retractEntryIds.contains(p.targetId)) retracted.add(p.targetId)
         }
+        return entries.filter { it.payload !is Payload.Retract && !retracted.contains(it.id) }
+    }
 
+    fun build(data: StaticData, entries: List<Entry>): State {
         val sessions = ArrayList<SessionRecord>()
         val chapters = LinkedHashMap<String, Chapter>()
         val difficulty = ArrayList<DifficultyDecl>()
@@ -29,12 +32,11 @@ object StateBuilder {
         val dms = LinkedHashMap<String, Dm>()
         val dmDone = LinkedHashSet<String>()
 
-        for (e in entries) {
-            if (retracted.contains(e.id)) continue
+        for (e in activeEntries(entries)) {
             when (val p = e.payload) {
                 is Payload.Session -> sessions.add(p.record)
                 is Payload.ChapterSeen -> {
-                    val key = p.chapter.subject.name + "|" + p.chapter.name
+                    val key = p.chapter.subject.name + "|" + p.chapter.name.lowercase()
                     if (!chapters.containsKey(key)) chapters[key] = p.chapter
                 }
                 is Payload.Difficulty -> difficulty.add(p.decl)

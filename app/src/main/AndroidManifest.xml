@@ -24,6 +24,8 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".FormsActivity" android:exported="false" />
+
         <receiver android:name=".ActionReceiver" android:exported="false" />
         <receiver android:name=".TriggerReceiver" android:exported="false" />
         <receiver android:name=".TimerEndReceiver" android:exported="false" />

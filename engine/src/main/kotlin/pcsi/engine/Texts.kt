@@ -55,9 +55,9 @@ object Texts {
         else -> ""
     }
 
-    fun activeLabel(s: ActiveSession): String {
-        val subj = if (s.subject == null) "" else " " + subject(s.subject)
-        return when (s.kind) {
+    fun kindLabel(kind: SessionKind, subject: Subject?): String {
+        val subj = if (subject == null) "" else " " + subject(subject)
+        return when (kind) {
             SessionKind.J0 -> "J0$subj"
             SessionKind.DEEPWORK -> "Deepwork$subj"
             SessionKind.DM -> "DM$subj"
@@ -67,4 +67,6 @@ object Texts {
             SessionKind.CLOTURE -> "Clôture"
         }
     }
+
+    fun activeLabel(s: ActiveSession): String = kindLabel(s.kind, s.subject)
 }
