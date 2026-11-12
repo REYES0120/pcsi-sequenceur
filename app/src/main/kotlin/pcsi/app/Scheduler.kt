@@ -14,6 +14,7 @@ import java.time.ZoneId
 object Scheduler {
     private const val RC_TRIGGER = 100
     private const val RC_TIMER = 101
+    private const val RC_AUTOCLOSE = 102
 
     fun millis(t: LocalDateTime): Long = t.atZone(ZoneId.systemDefault()).toInstant().toEpochMilli()
 
@@ -49,6 +50,25 @@ object Scheduler {
         } catch (ex: SecurityException) {
             am.setAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, endMillis, pi)
         }
+    }
+
+    /** Alarme de clôture automatique (15 min après la fin du timer). */
+    fun scheduleAutoClose(ctx: Context, at: LocalDateTime?) {
+        val am = ctx.getSystemService(AlarmManager::class.java)
+        val pi = broadcast(ctx, AutoCloseReceiver::class.java, RC_AUTOCLOSE)
+        am.cancel(pi)
+        if (at == null) return
+        val m = millis(at)
+        try {
+            am.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, m, pi)
+        } catch (ex: SecurityException) {
+            am.setAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, m, pi)
+        }
+    }
+
+    fun cancelAutoClose(ctx: Context) {
+        val am = ctx.getSystemService(AlarmManager::class.java)
+        am.cancel(broadcast(ctx, AutoCloseReceiver::class.java, RC_AUTOCLOSE))
     }
 
     fun cancelTimer(ctx: Context) {

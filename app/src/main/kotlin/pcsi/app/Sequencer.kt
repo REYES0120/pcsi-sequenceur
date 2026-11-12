@@ -19,10 +19,26 @@ import java.util.UUID
  */
 object Sequencer {
 
+    /**
+     * (H22) Session restée sans réponse 15 min après la fin du timer : clôturée comme faite,
+     * durée prévue, puis le recalcul propose la suite. Pas de clôture après un « débordé ».
+     */
+    private fun autoCloseIfDue(ctx: Context, now: LocalDateTime) {
+        val s = Repo.active(ctx) ?: return
+        val record = Lifecycle.autoClose(s, now) ?: return
+        Repo.record(ctx, record, now)
+        Repo.saveActive(ctx, null)
+        Notifier.cancelActive(ctx)
+        Notifier.cancelEnd(ctx)
+        Scheduler.cancelTimer(ctx)
+        Scheduler.cancelAutoClose(ctx)
+    }
+
     /** Recalcule et poste la proposition. `manual` = demande manuelle (cardio du dimanche avant 10h). */
     fun recalc(ctx: Context, manual: Boolean = false): Action {
         val now = LocalDateTime.now()
         Notifier.ensureChannels(ctx)
+        autoCloseIfDue(ctx, now)
         val state = Repo.loadState(ctx)
         if (state == null) {
             Repo.saveProposal(ctx, null)
@@ -37,6 +53,7 @@ object Sequencer {
         if (active != null) {
             // une session tourne : on réarme seulement l'alarme de fin (utile après un redémarrage)
             if (!active.overrun) Scheduler.scheduleTimerEnd(ctx, Scheduler.millis(active.plannedEnd))
+            Scheduler.scheduleAutoClose(ctx, Lifecycle.autoCloseAt(active))
             WidgetProvider.refresh(ctx)
             return Action.None(Reason.REST)
         }
@@ -75,6 +92,7 @@ object Sequencer {
         Notifier.cancelProposal(ctx)
         Notifier.postActive(ctx, s)
         Scheduler.scheduleTimerEnd(ctx, Scheduler.millis(s.plannedEnd))
+        Scheduler.scheduleAutoClose(ctx, Lifecycle.autoCloseAt(s))
         WidgetProvider.refresh(ctx)
     }
 
@@ -113,6 +131,7 @@ object Sequencer {
         Notifier.cancelActive(ctx)
         Notifier.cancelEnd(ctx)
         Scheduler.cancelTimer(ctx)
+        Scheduler.cancelAutoClose(ctx)
         recalc(ctx)
     }
 
@@ -121,6 +140,7 @@ object Sequencer {
         val s = Repo.active(ctx) ?: return
         val o = s.copy(overrun = true)
         Repo.saveActive(ctx, o)
+        Scheduler.cancelAutoClose(ctx)
         Notifier.cancelEnd(ctx)
         Notifier.postActive(ctx, o)
         WidgetProvider.refresh(ctx)

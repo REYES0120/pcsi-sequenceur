@@ -1,0 +1,407 @@
+{
+  "version": 1,
+  "semester": 1,
+  "weekA": "2026-11-09",
+  "daysOff": [
+    {
+      "from": "2026-10-17",
+      "to": "2026-11-01",
+      "label": "Vacances de la Toussaint (zone A)"
+    },
+    {
+      "from": "2026-11-11",
+      "to": "2026-11-11",
+      "label": "Armistice"
+    },
+    {
+      "from": "2026-12-19",
+      "to": "2027-01-03",
+      "label": "Vacances de Noël (zone A)"
+    }
+  ],
+  "slots": [
+    {
+      "day": "MON",
+      "start": "08:00",
+      "end": "11:05",
+      "subject": "CHIMIE",
+      "type": "TP",
+      "week": "A"
+    },
+    {
+      "day": "MON",
+      "start": "11:05",
+      "end": "12:00",
+      "subject": "CHIMIE",
+      "type": "TD",
+      "week": "A"
+    },
+    {
+      "day": "MON",
+      "start": "14:00",
+      "end": "15:50",
+      "subject": "SI",
+      "type": "COURS",
+      "week": "A"
+    },
+    {
+      "day": "MON",
+      "start": "08:00",
+      "end": "12:00",
+      "subject": "PHYSIQUE",
+      "type": "TP",
+      "week": "B"
+    },
+    {
+      "day": "MON",
+      "start": "16:05",
+      "end": "18:00",
+      "subject": "SI",
+      "type": "TD",
+      "week": "B"
+    },
+    {
+      "day": "TUE",
+      "start": "08:00",
+      "end": "09:50",
+      "subject": "MATHS",
+      "type": "COURS"
+    },
+    {
+      "day": "TUE",
+      "start": "10:05",
+      "end": "12:00",
+      "subject": "CHIMIE",
+      "type": "COURS"
+    },
+    {
+      "day": "TUE",
+      "start": "14:00",
+      "end": "15:00",
+      "subject": "MATHS",
+      "type": "TD"
+    },
+    {
+      "day": "TUE",
+      "start": "15:00",
+      "end": "15:50",
+      "subject": "PHYSIQUE",
+      "type": "TD"
+    },
+    {
+      "day": "TUE",
+      "start": "16:05",
+      "end": "17:05",
+      "subject": "PHYSIQUE",
+      "type": "COURS"
+    },
+    {
+      "day": "TUE",
+      "start": "17:05",
+      "end": "18:00",
+      "type": "EPS"
+    },
+    {
+      "day": "WED",
+      "start": "08:00",
+      "end": "09:50",
+      "subject": "SI",
+      "type": "TP"
+    },
+    {
+      "day": "WED",
+      "start": "10:05",
+      "end": "12:00",
+      "subject": "MATHS",
+      "type": "TD"
+    },
+    {
+      "day": "WED",
+      "start": "14:00",
+      "end": "15:50",
+      "subject": "PHILO",
+      "type": "COURS"
+    },
+    {
+      "day": "THU",
+      "start": "08:00",
+      "end": "09:50",
+      "subject": "PHYSIQUE",
+      "type": "COURS"
+    },
+    {
+      "day": "THU",
+      "start": "10:05",
+      "end": "12:00",
+      "subject": "ANGLAIS",
+      "type": "COURS"
+    },
+    {
+      "day": "THU",
+      "start": "14:00",
+      "end": "15:00",
+      "subject": "INFO",
+      "type": "COURS",
+      "week": "A"
+    },
+    {
+      "day": "THU",
+      "start": "15:00",
+      "end": "18:00",
+      "subject": "MATHS",
+      "type": "COURS"
+    },
+    {
+      "day": "FRI",
+      "start": "08:00",
+      "end": "09:50",
+      "subject": "PHYSIQUE",
+      "type": "COURS"
+    },
+    {
+      "day": "FRI",
+      "start": "10:05",
+      "end": "12:00",
+      "subject": "MATHS",
+      "type": "COURS"
+    },
+    {
+      "day": "FRI",
+      "start": "14:00",
+      "end": "15:50",
+      "subject": "INFO",
+      "type": "TP",
+      "week": "A"
+    }
+  ],
+  "colles": [
+    {
+      "date": "2026-09-15",
+      "start": "17:00",
+      "end": "18:00",
+      "subject": "ANGLAIS",
+      "colleur": "Mme Pegon"
+    },
+    {
+      "date": "2026-09-25",
+      "start": "12:00",
+      "end": "13:00",
+      "subject": "MATHS",
+      "colleur": "Mme Roos"
+    },
+    {
+      "date": "2026-09-28",
+      "start": "13:00",
+      "end": "14:00",
+      "subject": "ANGLAIS",
+      "colleur": "Mme Pegon"
+    },
+    {
+      "date": "2026-10-02",
+      "start": "13:00",
+      "end": "14:00",
+      "subject": "CHIMIE",
+      "colleur": "M. Badel"
+    },
+    {
+      "date": "2026-10-07",
+      "start": "13:00",
+      "end": "14:00",
+      "subject": "PHYSIQUE",
+      "colleur": "M. Bernaud"
+    },
+    {
+      "date": "2026-10-07",
+      "start": "18:00",
+      "end": "19:00",
+      "subject": "MATHS",
+      "colleur": "Mme Bouillet"
+    },
+    {
+      "date": "2026-10-14",
+      "start": "12:00",
+      "end": "13:00",
+      "subject": "ANGLAIS",
+      "colleur": "Mme Fayemendy"
+    },
+    {
+      "date": "2026-11-04",
+      "start": "17:00",
+      "end": "18:00",
+      "subject": "MATHS",
+      "colleur": "M. Lallouche"
+    },
+    {
+      "date": "2026-11-09",
+      "start": "19:00",
+      "end": "20:00",
+      "subject": "CHIMIE",
+      "colleur": "M. Perrey"
+    },
+    {
+      "date": "2026-11-11",
+      "start": "17:00",
+      "end": "18:00",
+      "subject": "ANGLAIS",
+      "colleur": "Mme Fayemendy"
+    },
+    {
+      "date": "2026-11-16",
+      "start": "14:00",
+      "end": "15:00",
+      "subject": "PHYSIQUE",
+      "colleur": "M. Mancini"
+    },
+    {
+      "date": "2026-11-18",
+      "start": "18:00",
+      "end": "19:00",
+      "subject": "MATHS",
+      "colleur": "M. Lallouche"
+    },
+    {
+      "date": "2026-11-23",
+      "start": "13:00",
+      "end": "14:00",
+      "subject": "CHIMIE",
+      "colleur": "M. Chenevois"
+    },
+    {
+      "date": "2026-11-25",
+      "start": "17:00",
+      "end": "18:00",
+      "subject": "ANGLAIS",
+      "colleur": "M. Agnelli"
+    },
+    {
+      "date": "2026-12-02",
+      "start": "13:00",
+      "end": "14:00",
+      "subject": "PHYSIQUE",
+      "colleur": "M. Staron"
+    },
+    {
+      "date": "2026-12-02",
+      "start": "17:00",
+      "end": "18:00",
+      "subject": "MATHS",
+      "colleur": "Mme Bouillet"
+    },
+    {
+      "date": "2026-12-07",
+      "start": "13:00",
+      "end": "14:00",
+      "subject": "CHIMIE",
+      "colleur": "M. Roizard"
+    },
+    {
+      "date": "2026-12-09",
+      "start": "16:00",
+      "end": "17:00",
+      "subject": "ANGLAIS",
+      "colleur": "M. Agnelli"
+    },
+    {
+      "date": "2026-12-15",
+      "start": "18:00",
+      "end": "19:00",
+      "subject": "PHYSIQUE",
+      "colleur": "M. Segala"
+    },
+    {
+      "date": "2026-12-16",
+      "start": "16:00",
+      "end": "17:00",
+      "subject": "MATHS",
+      "colleur": "M. Lallouche"
+    },
+    {
+      "date": "2027-01-04",
+      "start": "12:00",
+      "end": "13:00",
+      "subject": "CHIMIE",
+      "colleur": "M. Lejeune"
+    },
+    {
+      "date": "2027-01-06",
+      "start": "12:00",
+      "end": "13:00",
+      "subject": "ANGLAIS",
+      "colleur": "Mme Fayemendy"
+    },
+    {
+      "date": "2027-01-13",
+      "start": "16:00",
+      "end": "17:00",
+      "subject": "MATHS",
+      "colleur": "M. Duclosson"
+    },
+    {
+      "date": "2027-01-14",
+      "start": "13:00",
+      "end": "14:00",
+      "subject": "PHYSIQUE",
+      "colleur": "Mme Vial"
+    }
+  ],
+  "ds": [
+    {
+      "date": "2026-11-14",
+      "start": "08:00",
+      "end": "12:00",
+      "subjects": [
+        "MATHS"
+      ]
+    },
+    {
+      "date": "2026-11-21",
+      "start": "08:00",
+      "end": "12:00",
+      "subjects": [
+        "PHYSIQUE"
+      ]
+    },
+    {
+      "date": "2026-11-28",
+      "start": "08:00",
+      "end": "12:00",
+      "subjects": [
+        "CHIMIE",
+        "SI"
+      ]
+    },
+    {
+      "date": "2026-12-05",
+      "start": "08:00",
+      "end": "12:00",
+      "subjects": [
+        "MATHS"
+      ]
+    },
+    {
+      "date": "2026-12-12",
+      "start": "08:00",
+      "end": "12:00",
+      "subjects": [
+        "PHYSIQUE"
+      ]
+    },
+    {
+      "date": "2027-01-09",
+      "start": "08:00",
+      "end": "12:00",
+      "subjects": [
+        "CHIMIE",
+        "SI"
+      ]
+    },
+    {
+      "date": "2027-01-16",
+      "start": "08:00",
+      "end": "12:00",
+      "subjects": [
+        "MATHS"
+      ]
+    }
+  ]
+}

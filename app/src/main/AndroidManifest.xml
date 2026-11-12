@@ -29,6 +29,7 @@
         <receiver android:name=".ActionReceiver" android:exported="false" />
         <receiver android:name=".TriggerReceiver" android:exported="false" />
         <receiver android:name=".TimerEndReceiver" android:exported="false" />
+        <receiver android:name=".AutoCloseReceiver" android:exported="false" />
 
         <receiver android:name=".BootReceiver" android:exported="true">
             <intent-filter>

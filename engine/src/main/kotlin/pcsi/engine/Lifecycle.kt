@@ -35,6 +35,19 @@ object Lifecycle {
 
     fun isExpired(p: Proposal, now: LocalDateTime): Boolean = !now.isBefore(p.expiresAt)
 
+    /** (H22) Instant de clôture automatique : 15 min après la fin du timer. Aucun après un « débordé ». */
+    fun autoCloseAt(s: ActiveSession): LocalDateTime? =
+        if (s.overrun) null else s.plannedEnd.plusMinutes(Params.AUTO_CLOSE_AFTER_END_MIN.toLong())
+
+    fun autoCloseDue(s: ActiveSession, now: LocalDateTime): Boolean {
+        val at = autoCloseAt(s) ?: return false
+        return !now.isBefore(at)
+    }
+
+    /** Session restée sans réponse : comptée faite avec sa durée prévue. Null si ce n'est pas encore l'heure. */
+    fun autoClose(s: ActiveSession, now: LocalDateTime): SessionRecord? =
+        if (autoCloseDue(s, now)) finish(s, now, FinishMode.TIMER_DONE) else null
+
     /** Seul le J0 « macro » et l'absence de proposition ne démarrent pas de timer. */
     fun startable(a: Action): Boolean = when (a) {
         is Action.Cloture, is Action.Pause, is Action.Sport, is Action.Cardio,

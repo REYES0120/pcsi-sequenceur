@@ -54,6 +54,9 @@ object Params {
     /** Une proposition non validée expire après 15 min. */
     const val PROPOSAL_EXPIRY_MIN: Int = 15
 
+    /** Session sans réponse 15 min après la fin du timer : clôturée comme faite, durée prévue (H22). */
+    const val AUTO_CLOSE_AFTER_END_MIN: Int = 15
+
     // ---- Journée (décisions déjà prises) ----
     val WAKE: LocalTime = LocalTime.of(7, 0)
     val BEDTIME: LocalTime = LocalTime.of(22, 30)

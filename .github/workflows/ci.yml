@@ -9,23 +9,46 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: "17"
+
       - uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: "8.9"
-      - name: Tests du moteur
+
+      - name: Tests du moteur (dont l'import de data.json et data_cameo.json)
         run: gradle :engine:test --no-daemon
-      - name: Compilation de l'application (APK de test)
-        run: gradle :app:assembleDebug --no-daemon
-      - uses: actions/upload-artifact@v4
+
+      - name: APK final signé
+        run: |
+          gradle :app:assembleRelease --no-daemon
+          cp app/build/outputs/apk/release/app-release.apk Sequenceur.apk
+
+      - name: APK téléchargeable
+        uses: actions/upload-artifact@v4
         with:
-          name: apk-debug
-          path: app/build/outputs/apk/debug/app-debug.apk
-      - uses: actions/upload-artifact@v4
+          name: sequenceur-apk
+          path: Sequenceur.apk
+          if-no-files-found: error
+          retention-days: 90
+
+      - name: Fichiers de données
+        uses: actions/upload-artifact@v4
+        with:
+          name: donnees
+          path: |
+            donnees/data.json
+            donnees/data_cameo.json
+          if-no-files-found: error
+          retention-days: 90
+
+      - name: Rapport de tests
         if: always()
+        uses: actions/upload-artifact@v4
         with:
           name: rapport-tests
           path: engine/build/reports/tests/test
+          retention-days: 14

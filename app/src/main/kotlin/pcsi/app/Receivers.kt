@@ -38,6 +38,13 @@ class TimerEndReceiver : BroadcastReceiver() {
     }
 }
 
+/** Alarme de clôture automatique : le recalcul clôture la session si l'heure est passée. */
+class AutoCloseReceiver : BroadcastReceiver() {
+    override fun onReceive(context: Context, intent: Intent) {
+        Sequencer.recalc(context)
+    }
+}
+
 /** Redémarrage, mise à jour de l'app, changement d'heure ou de fuseau : on réarme tout. */
 class BootReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
